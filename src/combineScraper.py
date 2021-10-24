@@ -6,7 +6,8 @@ Script to scrape NFL combine stats from Pro-FootballReference.com and compare 40
 
 import pandas as pd
 import numpy as np
-#import matplotlib.pyplot as plt
+import os
+
 
 class combineScraper(object):
 
@@ -72,7 +73,7 @@ class combineScraper(object):
         df['Conference'] = df['School'].apply(self.determine_conference)
             
         if save_csv:
-            df.to_csv(f"combine_stats-{year}.csv", index=False)
+            df.to_csv(os.path.join("..", "data",f"combine_stats-{year}.csv"), index=False)
         
         print(df.head())
         
@@ -106,12 +107,13 @@ class combineScraper(object):
         df = pd.concat(dfs)
         
         print(df)
-        df.to_csv(f'all_combine_stats.csv', index=False)
+        df.to_csv(os.path.join("..", "data", f'all_combine_stats.csv'), index=False)
         
         return df
 
 if __name__=="__main__":
 #    Will need to run a groupby conference to finish this up
-    combineScraper().get_all_combines()
-
-
+    df = combineScraper().get_all_combines()
+#    df['40yd'] = df['40yd'].astype(float)
+#    df_grouped = df.groupby('Conference')['40yd'].mean()
+#    print(df_grouped)
