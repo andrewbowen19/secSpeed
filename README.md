@@ -30,7 +30,7 @@ Below are the average 40-yard times for eeach conference at the combine:
 | 2. |Big Ten    |    4.763          |
 | 3. |Non Power-5|    4.763          |
 | 4. |Big 12     |    4.774          |
-|** 5. |SEC        |    4.784         ** |
+|** 5.** |**SEC**        |    **4.784** |
 | 6. |Pac-12     |    4.785          |
 
 
