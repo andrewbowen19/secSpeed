@@ -15,9 +15,9 @@ To install required packages, use the included `requirements.txt` file:
 ---
 
 ## Methods
-We scraper each year's combine results dating back to the [2010 NFL Combine](https://www.pro-football-reference.com/draft/2010-combine.htm) from [Pro Football Reference](https://www.pro-football-reference.com), you can run `python combineScraper.py` from the `src` directory. This will produce a .csv file in the data directory containing all combine results dataing back to then. 
+We scraper each year's combine results dating back to the [2010 NFL Combine](https://www.pro-football-reference.com/draft/2010-combine.htm) from [Pro Football Reference](https://www.pro-football-reference.com), you can run `python combineScraper.py` from the `src` directory. This will produce a .csv file in the `data` directory containing all combine results dataing back to then. 
 
-Then, we grouped each conference's results using [pandas.groupby](https://realpython.com/pandas-groupby/). This can be done using our `analysis.py` script. 
+Then, we grouped each conference's results using [pandas.groupby](https://realpython.com/pandas-groupby/). This can be done using our `analysis.py` script. We grouped non-power 5 conferences together as there were too many schools and I didn't want to make the conference dictionary super long. 
 
 ---
 ## Results
@@ -30,10 +30,10 @@ Below are the average 40-yard times for eeach conference at the combine:
 | 2. |Big Ten    |    4.763          |
 | 3. |Non Power-5|    4.763          |
 | 4. |Big 12     |    4.774          |
-|** 5.** |**SEC**        |    **4.784** |
+|**5.** |**SEC**        |    **4.784** |
 | 6. |Pac-12     |    4.785          |
 
-
+Out of the 6 conference groupings, the SEC ranked 5th in terms of 40-yard dash times. 
 ___
 ## Conclusion
 Next time you hear "SEC Speed", just know that it's a canard! 
