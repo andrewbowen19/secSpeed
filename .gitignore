@@ -133,6 +133,4 @@ env/
 *.pdf
 *.png
 *.csv
-data/
-plots/
 
