@@ -24,7 +24,7 @@ Then, we grouped each conference's results using [pandas.groupby](https://realpy
 
 Below are the average 40-yard times for eeach conference at the combine:
 
-**40 yard dash average times by conference**
+**40 yard dash average times by conference -- All Players**
 |Rank|Conference | Average 40-time   |
 |----|-----------|-------------------|
 | 1. |ACC        |    4.747          |
@@ -34,7 +34,22 @@ Below are the average 40-yard times for eeach conference at the combine:
 |**5.**|**SEC**  |    **4.784**      |
 | 6. |Pac-12     |    4.785          |
 
-Out of the 6 conference groupings, the SEC ranked 5th in terms of 40-yard dash times. You may be telling yourself, "Well certainly the SEC dominated in the 3-cone drill or shuttle run." Unfortunately you would be wrong. The SEC scored last and 4th in those categories, respectively.
+Out of the 6 conference groupings, the SEC ranked 5th in terms of 40-yard dash times. You may be telling yourself, "Well certainly the SEC dominated in the 3-cone drill or shuttle run." Unfortunately you would be wrong. The SEC scored last and 4th in those categories, respectively acrossa ll combine players who participated. Pro-football-reference does not provide data for players who did not participate in certain events, so the world may never know.
+
+### 40 yard dash average time for Skill Players
+Another question you may be asking is: "What about skill players?" Well, what about them? [Skill players](https://en.wikipedia.org/wiki/Skill_position) are defined as players that consistently tote the rock. An additional argument in out `analysis.py` script  in the `plot_avg_by_conf` function to filter out skill player's performance in different combine events. 
+
+
+**40 yard dash average times by conference -- All Players**
+|Rank|Conference | Average 40-time   |
+|----|-----------|-------------------|
+| 1. |Big 12     |    4.575          |
+| 3. |SEC        |    4.580          |
+| 2. |ACC        |    4.594          |
+| 4. |Big Ten    |    4.616          |
+| 5. |Non Power-5|    4.617          |
+| 6. |Pac-12     |    4.633          |
+
 ___
 ## Conclusion
 Next time you hear "SEC Speed", just know that it's an urban myth, like the yeti or bigfoot. While the SEC has been a dominant conference over the past decade, producing 6 national champions, just know the 'S' in *SEC* doesn't stand for "speed".

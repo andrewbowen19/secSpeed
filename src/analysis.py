@@ -20,7 +20,7 @@ skill_players = df.loc[(df['Pos'] != "DL" ) | (df['Pos'] != "OL") |
                        (df['Pos'] != "DT")|(df['Pos'] != "DE")]
 print(skill_players.head())
 
-def plot_avg_by_conf(dataframe=df, event="40yd", savefig=False):
+def plot_avg_by_conf(dataframe=df, event="40yd", savefig=False, skill_players_only=False):
     '''
     Plots bar chart of average value for a combine event by conference
     
@@ -29,7 +29,14 @@ def plot_avg_by_conf(dataframe=df, event="40yd", savefig=False):
         dataframe : pandas.DataFrame object (default all combine stats); combine stats
         event : str (default 40yd); combine event desired, must match one of the columns of df
     '''
-    
+#    Grabbing skill position players if desired -- also including CBs and safeties
+    if skill_players_only:
+        
+        dataframe = dataframe.loc[(dataframe['Pos']=="WR") |\
+                                  (dataframe['Pos']=="RB") |\
+                                  (dataframe['Pos']=="TE") |\
+                                  (dataframe['Pos']=="QB")]
+        print(dataframe)
     df_grouped = dataframe.groupby('Conference')[event].mean()
     print(f"Event: {event}")
     print(df_grouped)
@@ -63,8 +70,12 @@ if __name__=="__main__":
 
     for e in combine_events:
 #        Can change the df passed to our function to
-        plot_avg_by_conf(df, e)
+        plot_avg_by_conf(df, e, False, True)
         print('---------------------------------')
+        
+    print('#########################\n#########################\n########################')
+    print('SKILL PLAYERS:')
+    plot_avg_by_conf(df,"40yd", False, True)
 
     plot_40_vs_3cone(df)
     plt.show()
