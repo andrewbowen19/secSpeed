@@ -37,8 +37,7 @@ Below are the average 40-yard times for eeach conference at the combine:
 Out of the 6 conference groupings, the SEC ranked 5th in terms of 40-yard dash times. You may be telling yourself, "Well certainly the SEC dominated in the 3-cone drill or shuttle run." Unfortunately you would be wrong. The SEC scored last and 4th in those categories, respectively acrossa ll combine players who participated. Pro-football-reference does not provide data for players who did not participate in certain events, so the world may never know.
 
 ### 40 yard dash average time for Skill Players
-Another question you may be asking is: "What about skill players?" Well, what about them? [Skill players](https://en.wikipedia.org/wiki/Skill_position) are defined as players that consistently tote the rock. An additional argument in out `analysis.py` script  in the `plot_avg_by_conf` function to filter out skill player's performance in different combine events. 
-
+Another question you may be asking is: "What about skill players?" Well, what about them? [Skill players](https://en.wikipedia.org/wiki/Skill_position) are defined as players that consistently tote the rock. An additional argument in out `analysis.py` script  in the `plot_avg_by_conf` function to filter out skill player's performance in different combine events. When only considering skill players, the SEC ranks *2nd* to the Big 12 in 40-yard dash times. In the other combine events for which there is data, the SEC ranks first in **none** of them.
 
 **40 yard dash average times by conference -- All Players**
 |Rank|Conference | Average 40-time   |

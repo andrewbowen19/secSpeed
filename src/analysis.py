@@ -73,9 +73,9 @@ if __name__=="__main__":
         plot_avg_by_conf(df, e, False, True)
         print('---------------------------------')
         
-    print('#########################\n#########################\n########################')
-    print('SKILL PLAYERS:')
-    plot_avg_by_conf(df,"40yd", False, True)
+        print('#########################\n#########################\n########################')
+        print('SKILL PLAYERS:')
+        plot_avg_by_conf(df,e, False, True)
 
     plot_40_vs_3cone(df)
     plt.show()
