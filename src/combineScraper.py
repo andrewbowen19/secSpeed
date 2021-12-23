@@ -2,6 +2,8 @@
 
 '''
 Script to scrape NFL combine stats from Pro-FootballReference.com and compare 40-yard dash results between conferences
+
+NFL Combine stats pulled from here: https://www.pro-football-reference.com/draft/2021-combine.htm
 '''
 
 import pandas as pd
@@ -66,10 +68,8 @@ class combineScraper(object):
         url = f"https://www.pro-football-reference.com/draft/{year}-combine.htm"
         df = pd.read_html(url)[0]
         
-    #    Cleaning df
+        # Cleaning df & determining conference for each player
         df = df.loc[df['Player'] != "Player"]
-        
-    #    Determining Conference for eacxh player
         df['Conference'] = df['School'].apply(self.determine_conference)
             
         if save_csv:
@@ -82,6 +82,8 @@ class combineScraper(object):
     def determine_conference(self,school):
         '''
         Determines conference of player based on school
+
+        parameters
         '''
         if school in self.conferences['SEC']:
             return "SEC"
@@ -96,24 +98,31 @@ class combineScraper(object):
         else:
             return "Non Power-5"
             
-    def get_all_combines(self):
-    #    looping through combine years to get one big df
+    def get_all_combines(self, start=2010, end=2021,save_csv=True):
+        '''
+        Uses class method self.get_combine_stats to produce 
+        
+        parameters:
+            start, end : int, default 2021 & 2010; start and end year of time range for which combine data should be pulled
+            save_csv : boolean, default True; if True, save output dataframe as csv file in data directory
+
+        returns:
+            df : pd.DataFrame; contains combine event results for all players from start to end
+        '''
         dfs = []
-        for y in range(2021, 2010, -1):
+        for y in range(int(end), int(start), -1):
             print(f"Combine year: {y}")
             dfs.append(self.get_combine_stats(y, False))
             print('---------------------------------------')
             
         df = pd.concat(dfs)
-        
-        print(df)
-        df.to_csv(os.path.join("..", "data", f'all_combine_stats.csv'), index=False)
+
+        if save_csv:
+            df.to_csv(os.path.join("..", "data", f'all_combine_stats.csv'), index=False)
         
         return df
 
 if __name__=="__main__":
-#    Will need to run a groupby conference to finish this up
+    # Get data for all combines 2010 - 2021
     df = combineScraper().get_all_combines()
-#    df['40yd'] = df['40yd'].astype(float)
-#    df_grouped = df.groupby('Conference')['40yd'].mean()
-#    print(df_grouped)
+
