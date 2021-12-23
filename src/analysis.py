@@ -7,10 +7,16 @@ Analyzes NFL combine stats across conferences
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
+import seaborn as sns
 import os
+
 
 data_path = os.path.join("..", "data", "all_combine_stats.csv")
 df = pd.read_csv(data_path)
+
+# For plotting by conference later
+colordict = {'Non Power-5': '#000000','ACC': ' #013ca6', 'SEC': '#004b8d', 'Big 12': '#ef483e', 'Big Ten': '#0088ce', 'Pac-12': '#004b91'}
+df['Color'] = df['Conference'].apply(lambda x: colordict[x])
 
 # Pulling out only skill position players (non-lineman/linebackers/special teams)
 skill_players = df.loc[(df['Pos'] != "DL" ) | (df['Pos'] != "OL") |
@@ -52,25 +58,21 @@ def plot_avg_by_conf(dataframe=df, event="40yd", savefig=False, skill_players_on
         path = os.path.join('..', 'plots', f'bar_chart_{event}.pdf')
         f.savefig(path)
     print('---------------------------------')
-    
 
-def plot_40_vs_3cone(df=df, savefig=False):
+def event_scatter(df=df, xlabel='3Cone', ylabel='40yd', savefig=False):
     '''
-    Creates scatter plot of 40-yard times vs 3 cone drill times
+    Creates scatter plot of 2 combine events 
 
     parameters:
         df : pd.DataFrame; contains comin
     '''
-    # Plot that jawn
-    f,ax = plt.subplots()
-    ax.scatter( df['3Cone'], df['40yd'])
-    ax.set_title('NFL Combine 40yd vs 3cone')
-    ax.set_xlabel('3-cone time [s]')
-    ax.set_ylabel('40-yard time [s]')
+    # Plot that jawn (seabornd)
+    f, ax = plt.subplots()
+    sns.scatterplot(data=df, x=xlabel, y=ylabel, hue='Conference')
     
     # Save that jawn
     if savefig:
-        f.savefig(os.path.join("..", "plots", "combine-40yd-3cone.png"))
+        f.savefig(os.path.join("..", "plots", f"combine-{xlabel}-{ylabel}.png"))
     plt.show()
     
 
@@ -85,5 +87,8 @@ if __name__=="__main__":
         
         print('SKILL PLAYERS:')
         plot_avg_by_conf(df,e, True, True)
-    plot_40_vs_3cone(df, True)
+
+        print('######################')
+        print(f'Creating scatter plot: 40yd v {e}')
+        event_scatter(df, '40yd', e, True)
     plt.show()
