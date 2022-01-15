@@ -81,7 +81,6 @@ def event_scatter(df=df, xlabel='3Cone', ylabel='40yd', savefig=False):
 def create_histogram(data=df, xlabel='40yd', savefig=True):
     '''Creates panel plot of histogram '''
     
-
     # Generating histogram plot for each conference
     f, axs = plt.subplots(nrows=6, ncols=1, sharex=True, gridspec_kw={"hspace": 0.0})
     
