@@ -15,7 +15,7 @@ To install required packages, use the included `requirements.txt` file:
 ---
 
 ## Methods
-We scraper each year's combine results dating back to the [2010 NFL Combine](https://www.pro-football-reference.com/draft/2010-combine.htm) from [Pro Football Reference](https://www.pro-football-reference.com), you can run `python combineScraper.py` from the `src` directory. This will produce a .csv file in the `data` directory containing all combine results dating back to then. 
+We scraped each year's combine results dating back to the [2010 NFL Combine](https://www.pro-football-reference.com/draft/2010-combine.htm) from [Pro Football Reference](https://www.pro-football-reference.com), you can run `python combineScraper.py` from the `src` directory. This will produce a .csv file in the `data` directory containing all combine results dating back to then. 
 
 Then, we grouped each conference's results using [pandas.groupby](https://realpython.com/pandas-groupby/). This can be done using our `analysis.py` script. We grouped non-power 5 conferences together as there were too many schools and I didn't want to make the conference dictionary super long. 
 
@@ -42,12 +42,12 @@ Out of the 6 conference groupings, the SEC ranked 5th in terms of average 40-yar
 ### 40 yard dash average time for Skill Players
 Another question you may be asking is: "What about skill players?" Well, what about them? [Skill players](https://en.wikipedia.org/wiki/Skill_position) are defined as players that consistently tote the rock. An additional argument in out `analysis.py` script in the `plot_avg_by_conf` function to filter out skill player's performance in different combine events. When only considering skill players, the SEC ranks *2nd* to the Big 12 in 40-yard dash times. In the other combine events for which there is data, the SEC ranks first in **none** of them.
 
-**40 yard dash average times by conference -- All Players**
+**40 yard dash average times by conference -- Skill Players**
 |Rank|Conference | Average 40-time   |
 |----|-----------|-------------------|
 | 1. |Big 12     |    4.575          |
-| 3. |SEC        |    4.580          |
-| 2. |ACC        |    4.594          |
+| 2. |SEC        |    4.580          |
+| 3. |ACC        |    4.594          |
 | 4. |Big Ten    |    4.616          |
 | 5. |Non Power-5|    4.617          |
 | 6. |Pac-12     |    4.633          |
