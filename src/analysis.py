@@ -15,7 +15,10 @@ data_path = os.path.join("..", "data", "all_combine_stats.csv")
 df = pd.read_csv(data_path)
 
 # For plotting by conference later
-colordict = {'Non Power-5': '#000000','ACC': ' #013ca6', 'SEC': '#004b8d', 'Big 12': '#ef483e', 'Big Ten': '#0088ce', 'Pac-12': '#004b91'}
+colordict = {'Non Power-5': '#000000',
+             'ACC': '#013ca6', 'SEC': '#004b8d',
+             'Big 12': '#ef483e', 'Big Ten': '#0088ce',
+             'Pac-12': '#004b91'}
 df['Color'] = df['Conference'].apply(lambda x: colordict[x])
 
 # Pulling out only skill position players (non-lineman/linebackers/special teams)
@@ -73,15 +76,39 @@ def event_scatter(df=df, xlabel='3Cone', ylabel='40yd', savefig=False):
     # Save that jawn
     if savefig:
         f.savefig(os.path.join("..", "plots", f"combine-{xlabel}-{ylabel}.png"))
-    plt.show()
+    # plt.show()
+
+def create_histogram(data=df, xlabel='40yd', savefig=True):
+    '''Creates panel plot of histogram '''
     
+
+    # Generating histogram plot for each conference
+    f, axs = plt.subplots(nrows=6, ncols=1, sharex=True, gridspec_kw={"hspace": 0.0})
+    
+    for i, conf in enumerate(df['Conference'].unique()):
+        print(i, conf)
+
+        axs[i].hist(data[xlabel].loc[data['Conference']==conf],
+                    bins=20, range=(4.15, 6.0))
+        axs[i].set_ylabel(f"{conf}")
+
+    plt.tight_layout()
+    axs[0].set_title(f"{xlabel} - All conferences")
+        
+        # Saving figure if desired
+    if savefig:
+        path = os.path.join("..", "plots", f"combine-{xlabel}-hist.png")
+        f.savefig(path)
+    plt.show()
+
+
 
 if __name__=="__main__":
     # Creating plots for each event to cross-compare conferences
     combine_events = ["40yd", "Vertical",
                       "Bench", "Broad Jump",
                       "3Cone","Shuttle"]
-
+    create_histogram()
     for e in combine_events:
         plot_avg_by_conf(df, e, True, False)
         
@@ -91,4 +118,4 @@ if __name__=="__main__":
         print('######################')
         print(f'Creating scatter plot: 40yd v {e}')
         event_scatter(df, '40yd', e, True)
-    plt.show()
+    # plt.show()
