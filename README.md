@@ -35,7 +35,7 @@ Below are the average 40-yard times for eeach conference at the combine:
 | 6. |Pac-12     |    4.785          |
 
 
-![plots/combine-40yd-hist.png?raw=True]
+![](plots/combine-40yd-hist.png?raw=True)
 
 Out of the 6 conference groupings, the SEC ranked 5th in terms of average 40-yard dash times. The above histograms show the distribution of 40-yard times for each conference. No conference has a noticeable differently-shaped distribution in terms of the 40-yd dash. You may be telling yourself, "Well certainly the SEC dominated in the 3-cone drill or shuttle run." Unfortunately you would be wrong. The SEC scored last and 4th in those categories, respectively across all combine players who participated. Pro-football-reference does not provide data for players who did not participate in certain events, so the world may never know.
 
