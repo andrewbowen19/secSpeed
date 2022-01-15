@@ -92,7 +92,7 @@ def create_histogram(data=df, xlabel='40yd', savefig=True):
                     bins=20, range=(4.15, 6.0))
         axs[i].set_ylabel(f"{conf}")
 
-    plt.tight_layout()
+    # plt.tight_layout()
     axs[0].set_title(f"{xlabel} - All conferences")
         
         # Saving figure if desired
